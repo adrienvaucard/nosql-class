@@ -22,5 +22,5 @@ db.sports.updateMany({}, { $set: { team: []}})
 // Populate "team[]" when isRequiredTeam is true
 db.sports.updateMany({isTeamRequired: true}, { $set: { team: [{"name": "John Doe"}, {"name": "Brice De Nice"}]}}, {upsert: true})
 
-// Add Property to each player (WIP Not Finished)
-db.sports.updateMany({isRequiredTeam: true}, {$set: {sports.$.isCaptain: ""}})
+// Add Property to each player
+db.sports.updateMany({isTeamRequired: true}, {$set: {"team.$[].isCaptain": true}})
